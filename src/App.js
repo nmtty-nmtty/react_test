@@ -1,28 +1,14 @@
 import { useState } from "react";
 import "./styles.css";
 
-const LogoutButton = (props) => {
-  return <button onClick={props.toggleIsLoggedIn}>ログアウト</button>;
-};
+const numbers = [3, 6, 9, 12];
 
-const LoginButton = (props) => {
-  return <button onClick={props.toggleIsLoggedIn}>ログイン</button>;
-};
+const ListItems = () => {
+  const items = numbers.map((item) => <li key={item.toString()}>{item}</li>);
 
-const LoginControl = () => {
-  const [isLoggedIn, setIsLoggedInState] = useState(false);
-
-  const toggleIsLoggedIn = () => {
-    setIsLoggedInState(!isLoggedIn);
-  };
-
-  if (isLoggedIn) {
-    return <LogoutButton toggleIsLoggedIn={toggleIsLoggedIn} />;
-  }
-
-  return <LoginButton toggleIsLoggedIn={toggleIsLoggedIn} />;
+  return <ul>{items}</ul>;
 };
 
 export default function App() {
-  return <LoginControl />;
+  return <ListItems />;
 }
