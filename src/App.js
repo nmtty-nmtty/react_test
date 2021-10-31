@@ -1,14 +1,25 @@
 import { useState } from "react";
 import "./styles.css";
 
-const numbers = [3, 6, 9, 12];
+const InputText = () => {
+  const [inputTextValue, setInputTextValue] = useState("");
+  const [text, setText] = useState("JavaScript");
+  const handleChange = (e) => setInputTextValue(e.target.value);
 
-const ListItems = () => {
-  const items = numbers.map((item) => <li key={item.toString()}>{item}</li>);
+  const handleClick = () => {
+    setText(inputTextValue);
+    setInputTextValue("");
+  };
 
-  return <ul>{items}</ul>;
+  return (
+    <div className="App">
+      <h1>I love {text}!</h1>
+      <input type="text" value={inputTextValue} onChange={handleChange} />
+      <input type="button" value="入力" onClick={handleClick} />
+    </div>
+  );
 };
 
 export default function App() {
-  return <ListItems />;
+  return <InputText />;
 }
